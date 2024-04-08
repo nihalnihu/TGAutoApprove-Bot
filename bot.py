@@ -26,7 +26,7 @@ async def approval(app: Client, m: ChatJoinRequest):
         add_group(cht.id)
         await app.approve_chat_join_request(cht.id, usr.id)
         photo = random.choice(welcome)
-        await app.send_message(chat_id=usr.id, photo=photo, caption=f"Hey There {usr.first_name}\nWelcome To {cht.title}\n\n{usr.first_name} Your Request To Join {cht.title} Has Been Accepted By {app.me.first_name}")
+        await app.send_message(chat_id=usr.id, photo=photo, text=f"Hey There {usr.first_name}\nWelcome To {cht.title}\n\n{usr.first_name} Your Request To Join {cht.title} Has Been Accepted By {app.me.first_name}")
         add_user(usr.id)
     except (UserIsBlocked, PeerIdInvalid):
         pass
