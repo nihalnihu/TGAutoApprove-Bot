@@ -10,9 +10,9 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 app = Client("Auto Approve Bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
 
 welcome=[
-    "https://telegra.ph/file/25b2c719422e2283d32ee.jpg",
-    "https://telegra.ph/file/5dd8094e0155e4aee42f2.jpg",
-    "https://telegra.ph/file/7080f8d99a289fba37e2e.jpg",
+    "https://telegra.ph/file/0041ced3a5cd3c3c49d1b.png",
+    "https://telegra.ph/file/2f85a5c1e41c45a7323b4.png",
+    "https://telegra.ph/file/eec4efbcf8d28a694b14e.png",
     
 ]
 
