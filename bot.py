@@ -37,8 +37,13 @@ async def start(app: Client, msg: Message):
         try:
             await app.get_chat_member(chat_id=config.CHANNEL, user_id=msg.from_user.id)
             add_user(msg.from_user.id)
-            await msg.reply_photo(photo="https://telegra.ph/file/48e5d712212fe8891dd36.jpg", caption=f"Hᴇʟʟᴏ {msg.from_user.mention}...😌\n\n  ☉︎ Tʜɪs ɪs {app.me.mention},\n\n➲ A ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴍᴀᴅᴇ ғᴏʀ ᴀᴜᴛᴏ ᴀᴘᴘʀᴏᴠɪɴɢ ᴊᴏɪɴ ʀᴇǫᴜᴇsᴛ ɪɴ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ.\n\n➲ Jᴜsᴛ ᴀᴅᴅ {app.me.mention} ɪɴ ɢʀᴏᴜᴘs/ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ᴍᴀᴋᴇ ᴀᴅᴍɪɴ ᴡɪᴛʜ ɪɴᴠɪᴛᴇ ᴜsᴇʀs ᴠɪᴀ ʟɪɴᴋ ʀɪɢʜᴛs..",
-                                 reply_markup=InlineKeyboardMarkup(
+            await msg.reply_photo(
+                
+                photo="https://telegra.ph/file/48e5d712212fe8891dd36.jpg",
+                
+                caption=f"Hᴇʟʟᴏ {msg.from_user.mention}...😌\n\n  ☉︎ Tʜɪs ɪs {app.me.mention},\n\n➲ A ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴍᴀᴅᴇ ғᴏʀ ᴀᴜᴛᴏ ᴀᴘᴘʀᴏᴠɪɴɢ ᴊᴏɪɴ ʀᴇǫᴜᴇsᴛ ɪɴ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ.\n\n➲ Jᴜsᴛ ᴀᴅᴅ {app.me.mention} ɪɴ ɢʀᴏᴜᴘs/ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ᴍᴀᴋᴇ ᴀᴅᴍɪɴ ᴡɪᴛʜ ɪɴᴠɪᴛᴇ ᴜsᴇʀs ᴠɪᴀ ʟɪɴᴋ ʀɪɢʜᴛs..",
+              
+                reply_markup=InlineKeyboardMarkup(
                                      
                                      [
                                         
@@ -47,7 +52,15 @@ async def start(app: Client, msg: Message):
                                          [InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/TG_BotCreator")]
                                      ]))
         except UserNotParticipant:
-            await msg.reply_text(text=f"To Use {app.me.mention}, You Must Subscribe To {(await app.get_chat(config.CHANNEL)).title}", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join", url=f"https://t.me/{config.CHANNEL}")], [InlineKeyboardButton ("Joined ✅", url=f"https://t.me/{app.me.username}?start=start")]]))
+            await msg.reply_text(text=f"ᴛᴏ ᴜsᴇ {app.me.mention}, ʏᴏᴜ ᴍᴜsᴛ ᴊᴏɪɴᴇᴅ ɪɴ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ!!",
+                                 
+                                 reply_markup=InlineKeyboardMarkup(
+                                     
+                                     [
+                                         [InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{config.CHANNEL}")],
+                                         [InlineKeyboardButton ("ʀᴇsᴛᴀʀᴛ ✔︎", url=f"https://t.me/{app.me.username}?start=start")]
+                                     ]
+                                 ))
         except ChatAdminRequired:
             await app.send_message(text=f"I'm not admin in fsub chat, Ending fsub...", chat_id=config.OWNER_ID)
     else:
@@ -73,12 +86,14 @@ async def start(app: Client, msg: Message):
 async def gc(app: Client, msg: Message):
     add_group(msg.chat.id)
     add_user(msg.from_user.id)
-    await msg.reply_text(text=f"{msg.from_user.mention} Start Me In Private For More Info..", 
-                         
-                         reply_markup=InlineKeyboardMarkup(
+    await msg.reply_text(
+        
+        text=f"𝘿𝙚𝙖𝙧 {msg.from_user.mention}.㋛︎\n𝙎𝙩𝙖𝙧𝙩 𝙈𝙚 𝙄𝙣 𝙋𝙧𝙞𝙫𝙖𝙩𝙚 𝙁𝙤𝙧 𝙈𝙤𝙧𝙚 𝙄𝙣𝙛𝙤...", 
+        
+        reply_markup=InlineKeyboardMarkup(
                              
                              [
-                                 [InlineKeyboardButton("Start Me In Private", url=f"https://t.me/{app.me.username}?start=start")]
+                                 [InlineKeyboardButton("sᴛᴀʀᴛ ᴍᴇ ɪɴ ᴘᴍ", url=f"https://t.me/{app.me.username}?start=start")]
                              ]
                          
                          ))
