@@ -9,6 +9,7 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 
 app = Client("Auto Approve Bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
 
+
 welcome=[
     "https://telegra.ph/file/0041ced3a5cd3c3c49d1b.png",
     "https://telegra.ph/file/2f85a5c1e41c45a7323b4.png",
@@ -24,7 +25,7 @@ async def approval(app: Client, m: ChatJoinRequest):
     try:
         add_group(cht.id)
         await app.approve_chat_join_request(cht.id, usr.id)
-        gif = random.choice(welcome)
+        photo = random.choice(welcome)
         await app.send_animation(chat_id=usr.id, animation=gif, caption=f"Hey There {usr.first_name}\nWelcome To {cht.title}\n\n{usr.first_name} Your Request To Join {cht.title} Has Been Accepted By {app.me.first_name}")
         add_user(usr.id)
     except (UserIsBlocked, PeerIdInvalid):
@@ -52,10 +53,10 @@ async def start(app: Client, msg: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(f"ᴀᴅᴅ {app.me.first_name}", url=f"https://t.me/{app.me.username}?startgroup=true")
+                        InlineKeyboardButton(f"ᴀᴅᴅ {app.me.first_name}", url=f"https://t.me/{app.me.username}?startchannel=true")
                     ],
                     [
-                        InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/ZenBotX")
+                        InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/TG_BotCreator")
                     ],
                 ]
             )
