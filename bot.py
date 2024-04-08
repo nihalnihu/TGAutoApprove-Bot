@@ -25,13 +25,13 @@ async def approval(app: Client, m: ChatJoinRequest):
     try:
         add_group(cht.id)
         await app.approve_chat_join_request(cht.id, usr.id)
-        photo = random.choice(welcome)
-        await app.send_message(chat_id=usr.id, photo=photo, text=f"Hey There {usr.first_name}\nWelcome To {cht.title}\n\n{usr.first_name} Your Request To Join {cht.title} Has Been Accepted By {app.me.first_name}")
+        gif = random.choice(welcome)
+        await app.send_animation(chat_id=usr.id, animation=gif, caption=f"Hey There {usr.first_name}\nWelcome To {cht.title}\n\n{usr.first_name} Your Request To Join {cht.title} Has Been Accepted By {app.me.first_name}")
         add_user(usr.id)
     except (UserIsBlocked, PeerIdInvalid):
         pass
     except Exception as err:
-        print(str(err))   
+        print(str(err))      
 
 #pvtstart
 @app.on_message(filters.command("start") & filters.private)
