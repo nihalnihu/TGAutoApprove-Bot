@@ -1,12 +1,26 @@
 import os, random, traceback
-from config import API_ID, BOT_TOKEN, API_HASH, FSUB, CHANNEL, OWNER_ID
 from pyrogram import filters, Client
 from pyrogram.types import Message, ChatJoinRequest, InlineKeyboardButton, InlineKeyboardMarkup 
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, ChatAdminRequired, UserNotParticipant
-
 from database import add_user, add_group, all_users, all_groups, users, remove_user
+import os
+from os import getenv
+from dotenv import load_dotenv
 
-app = Client("Auto Approve Bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+load_dotenv('config.env')
+
+API_ID = os.getenv("API_ID")
+API_HASH = os.getenv("API_HASH")
+BOT_TOKEN = os.getenv("BOT_TOKEN") #Put your bot token here
+CHANNEL = os.getenv("CHANNEL") #Your public channel username without @ for force subscription.
+#Optional Variables
+OWNER_ID = os.getenv("OWNER_ID") #Go to and type /id and put that value here. 
+FSUB = os.getenv("FSUB", True) #Set this True if you want to enable force subscription from users else set to False.
+
+app = Client("Auto Approve Bot", 
+             api_id=API_ID, 
+             api_hash=API_HASH, 
+             bot_token=BOT_TOKEN)
 
 
 welcome=[
