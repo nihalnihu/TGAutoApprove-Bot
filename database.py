@@ -1,5 +1,11 @@
 from pymongo import MongoClient
-from config import MONGO
+import os
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv('config.env')
+
+MONGO = os.getenv("MONGO")
 
 client = MongoClient(MONGO)
 
