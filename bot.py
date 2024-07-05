@@ -1,13 +1,12 @@
 import os, random, traceback
-import config
-
+from config import API_ID, BOT_TOKEN, API_HASH, FSUB, CHANNEL, OWNER_ID
 from pyrogram import filters, Client
 from pyrogram.types import Message, ChatJoinRequest, InlineKeyboardButton, InlineKeyboardMarkup 
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, ChatAdminRequired, UserNotParticipant
 
 from database import add_user, add_group, all_users, all_groups, users, remove_user
 
-app = Client("Auto Approve Bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
+app = Client("Auto Approve Bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 
 welcome=[
@@ -33,7 +32,7 @@ async def approval(app: Client, m: ChatJoinRequest):
 #pvtstart
 @app.on_message(filters.command("start") & filters.private)
 async def start(app: Client, msg: Message):
-    if config.FSUB:
+    if FSUB:
         try:
             await app.get_chat_member(chat_id=config.CHANNEL, user_id=msg.from_user.id)
             add_user(msg.from_user.id)
@@ -57,12 +56,12 @@ async def start(app: Client, msg: Message):
                                  reply_markup=InlineKeyboardMarkup(
                                      
                                      [
-                                         [InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{config.CHANNEL}")],
+                                         [InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{CHANNEL}")],
                                          [InlineKeyboardButton ("ʀᴇsᴛᴀʀᴛ ✔︎", url=f"https://t.me/{app.me.username}?start=start")]
                                      ]
                                  ))
         except ChatAdminRequired:
-            await app.send_message(text=f"I'm not admin in fsub chat, Ending fsub...", chat_id=config.OWNER_ID)
+            await app.send_message(text=f"I'm not admin in fsub chat, Ending fsub...", chat_id=OWNER_ID)
     else:
         await msg.reply_photo(
             photo="https://telegra.ph/file/48e5d712212fe8891dd36.jpg",
