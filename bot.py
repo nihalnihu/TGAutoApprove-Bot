@@ -9,12 +9,12 @@ from dotenv import load_dotenv
 
 load_dotenv('config.env')
 
-API_ID = os.getenv("API_ID")
-API_HASH = os.getenv("API_HASH")
-BOT_TOKEN = os.getenv("BOT_TOKEN") #Put your bot token here
-CHANNEL = os.getenv("CHANNEL") #Your public channel username without @ for force subscription.
+API_ID = "4640974"
+API_HASH = "75343828eb25bfb382cc04ae610b1522")
+BOT_TOKEN = "7065287929:AAEB7YRH8kjNnKx4aVVcMkgc0EfGr2893RE" #Put your bot token here
+CHANNEL = -1002051607559 #Your public channel username without @ for force subscription.
 #Optional Variables
-OWNER_ID = os.getenv("OWNER_ID") #Go to and type /id and put that value here. 
+OWNER_ID = 1107626477 #Go to and type /id and put that value here. 
 FSUB = os.getenv("FSUB", True) #Set this True if you want to enable force subscription from users else set to False.
 
 app = Client("Auto Approve Bot", 
