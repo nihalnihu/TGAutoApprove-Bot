@@ -1,11 +1,6 @@
 from pymongo import MongoClient
-import os
-from os import getenv
-from dotenv import load_dotenv
+from config import MONGO
 
-load_dotenv('config.env')
-
-MONGO = os.getenv("MONGO", "mongodb+srv://n:n@cluster0.9laytpy.mongodb.net/?retryWrites=true&w=majority")
 client = MongoClient(MONGO)
 
 users = client['main']['users']
