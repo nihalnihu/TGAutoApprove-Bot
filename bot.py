@@ -48,7 +48,7 @@ async def approval(app: Client, m: ChatJoinRequest):
 async def start(app: Client, msg: Message):
     if FSUB:
         try:
-            await app.get_chat_member(chat_id=config.CHANNEL, user_id=msg.from_user.id)
+            await app.get_chat_member(chat_id=CHANNEL, user_id=msg.from_user.id)
             add_user(msg.from_user.id)
             await msg.reply_photo(
                 
@@ -112,14 +112,14 @@ async def gc(app: Client, msg: Message):
                          ))
 
 #stats
-@app.on_message(filters.command("stats") & filters.user(config.OWNER_ID))
+@app.on_message(filters.command("stats") & filters.user(OWNER_ID))
 async def dbtool(app: Client, m: Message):
     xx = all_users()
     x = all_groups()
     await m.reply_text(text=f"Stats for {app.me.mention}\n🙋‍♂️ Users : {xx}\n👥 Groups : {x}")
 
 #Broadcast
-@app.on_message(filters.command("bc") & filters.user(config.OWNER_ID))
+@app.on_message(filters.command("bc") & filters.user(OWNER_ID))
 async def fcast(_, m : Message):
     allusers = users
     lel = await m.reply_text("`⚡️ Processing...`")
