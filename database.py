@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv('config.env')
 
-MONGO = os.getenv("MONGO")
+MONGO = "mongodb+srv://n:n@cluster0.9laytpy.mongodb.net/?retryWrites=true&w=majority"
 
 client = MongoClient(MONGO)
 
