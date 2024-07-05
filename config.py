@@ -2,7 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 
 #Necessary Variables 
-API_ID = int(getenv("API_ID", "4640974")
+API_ID = int(getenv("API_ID", "4640974"))
 API_HASH = getenv("API_HASH", "75343828eb25bfb382cc04ae610b1522")
 BOT_TOKEN = getenv("BOT_TOKEN", "7065287929:AAEz93hgi1nH9uynKWdwH_NS17YfnKbC6XY") #Put your bot token here
 CHANNEL = getenv("CHANNEL", "TG_BotCreator") #Your public channel username without @ for force subscription.
