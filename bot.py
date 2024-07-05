@@ -1,26 +1,13 @@
 import os, random, traceback
+import config
+
 from pyrogram import filters, Client
 from pyrogram.types import Message, ChatJoinRequest, InlineKeyboardButton, InlineKeyboardMarkup 
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, ChatAdminRequired, UserNotParticipant
+
 from database import add_user, add_group, all_users, all_groups, users, remove_user
-import os
-from os import getenv
-from dotenv import load_dotenv
 
-load_dotenv('config.env')
-
-API_ID = os.getenv("API_ID", '4640974')
-API_HASH = os.getenv("API_HASH", '75343828eb25bfb382cc04ae610b1522')
-BOT_TOKEN = os.getenv("BOT_TOKEN", '7065287929:AAEB7YRH8kjNnKx4aVVcMkgc0EfGr2893RE') #Put your bot token here
-CHANNEL = os.getenv("CHANNEL", 'TG_BotCreator') #Your public channel username without @ for force subscription.
-#Optional Variables
-OWNER_ID = os.getenv("OWNER_ID", '1107626477') #Go to and type /id and put that value here. 
-FSUB = os.getenv("FSUB", True)
-
-app = Client("Auto Approve Bot", 
-             api_id=API_ID, 
-             api_hash=API_HASH, 
-             bot_token=BOT_TOKEN)
+app = Client("Auto Approve Bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
 
 
 welcome=[
@@ -46,9 +33,9 @@ async def approval(app: Client, m: ChatJoinRequest):
 #pvtstart
 @app.on_message(filters.command("start") & filters.private)
 async def start(app: Client, msg: Message):
-    if FSUB:
+    if config.FSUB:
         try:
-            await app.get_chat_member(chat_id=CHANNEL, user_id=msg.from_user.id)
+            await app.get_chat_member(chat_id=config.CHANNEL, user_id=msg.from_user.id)
             add_user(msg.from_user.id)
             await msg.reply_photo(
                 
@@ -70,12 +57,12 @@ async def start(app: Client, msg: Message):
                                  reply_markup=InlineKeyboardMarkup(
                                      
                                      [
-                                         [InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{CHANNEL}")],
+                                         [InlineKeyboardButton("ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{config.CHANNEL}")],
                                          [InlineKeyboardButton ("ʀᴇsᴛᴀʀᴛ ✔︎", url=f"https://t.me/{app.me.username}?start=start")]
                                      ]
                                  ))
         except ChatAdminRequired:
-            await app.send_message(text=f"I'm not admin in fsub chat, Ending fsub...", chat_id=OWNER_ID)
+            await app.send_message(text=f"I'm not admin in fsub chat, Ending fsub...", chat_id=config.OWNER_ID)
     else:
         await msg.reply_photo(
             photo="https://telegra.ph/file/48e5d712212fe8891dd36.jpg",
@@ -112,14 +99,14 @@ async def gc(app: Client, msg: Message):
                          ))
 
 #stats
-@app.on_message(filters.command("stats") & filters.user(OWNER_ID))
+@app.on_message(filters.command("stats") & filters.user(config.OWNER_ID))
 async def dbtool(app: Client, m: Message):
     xx = all_users()
     x = all_groups()
     await m.reply_text(text=f"Stats for {app.me.mention}\n🙋‍♂️ Users : {xx}\n👥 Groups : {x}")
 
 #Broadcast
-@app.on_message(filters.command("bc") & filters.user(OWNER_ID))
+@app.on_message(filters.command("bc") & filters.user(config.OWNER_ID))
 async def fcast(_, m : Message):
     allusers = users
     lel = await m.reply_text("`⚡️ Processing...`")
