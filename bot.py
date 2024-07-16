@@ -52,7 +52,8 @@ def run_bot():
                     photo="https://telegra.ph/file/48e5d712212fe8891dd36.jpg",
                     caption=f"Hᴇʟʟᴏ {msg.from_user.mention}...😌\n\n  ☉︎ Tʜɪs ɪs {app.me.mention},\n\n➲ A ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ᴍᴀᴅᴇ ғᴏʀ ᴀᴜᴛᴏ ᴀᴘᴘʀᴏᴠɪɴɢ ᴊᴏɪɴ ʀᴇǫᴜᴇsᴛ ɪɴ ɢʀᴏᴜᴘ/ᴄʜᴀɴɴᴇʟ.\n\n➲ Jᴜsᴛ ᴀᴅᴅ {app.me.mention} ɪɴ ɢʀᴏᴜᴘs/ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ᴍᴀᴋᴇ ᴀᴅᴍɪɴ ᴡɪᴛʜ ɪɴᴠɪᴛᴇ ᴜsᴇʀs ᴠɪᴀ ʟɪɴᴋ ʀɪɡʜᴛs..",
                     reply_markup=InlineKeyboardMarkup([
-                        [InlineKeyboardButton(f"ᴀᴅᴅ {app.me.first_name}", url=f"https://t.me/{app.me.username}?startchannel=true")],
+                        [InlineKeyboardButton(f"ᴀᴅᴅ {app.me.first_name} ᴛᴏ ᴄʜᴀɴɴᴇʟ", url=f"https://t.me/{app.me.username}?startchannel=true")],
+                        [InlineKeyboardButton(f"ᴀᴅᴅ {app.me.first_name} ᴛᴏ ɢʀᴏᴜᴘ", url=f"https://t.me/{app.me.username}?startgroup=true")],
                         [InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ", url="https://t.me/TG_BotCreator")]
                     ])
                 )
