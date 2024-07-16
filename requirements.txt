@@ -2,3 +2,4 @@ pyrofork
 tgcrypto
 python-dotenv
 pymongo
+Flask==2.1.1
