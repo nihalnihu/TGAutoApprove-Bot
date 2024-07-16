@@ -18,7 +18,7 @@ def health_check():
     return 'Healthy', 200
 
 def run_flask():
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8080)
 
 def run_bot():
     bot = Client("Auto Approve Bot", api_id=config.API_ID, api_hash=config.API_HASH, bot_token=config.BOT_TOKEN)
