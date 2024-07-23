@@ -30,26 +30,18 @@ def remove_user(user_id):
         return 
     return users.delete_one({"user_id": str(user_id)})
     
-def add_group(chat_id, username=None, name=None):
+def add_group(chat_id):
     in_db = already_dbg(chat_id)
     if in_db:
         return
-    group_data = {"chat_id": str(chat_id)}
-    if username:
-        group_data["username"] = username
-    if name:
-        group_data["name"] = name
-    return groups.insert_one(group_data)
-        
+    return groups.insert_one({"chat_id": str(chat_id)})
+
 def all_users():
     user = users.find({})
     usrs = len(list(user))
     return usrs
 
 def all_groups():
-    group_cursor = groups.find({})
-    groups_list = list(group_cursor)
-    group_count = len(groups_list)
-    usernames = [group.get("username", "No Username") for group in groups_list]
-    names = [group.get("name", "No Name") for group in groups_list]
-    return group_count, usernames, names
+    group = groups.find({})
+    grps = len(list(group))
+    return grps
